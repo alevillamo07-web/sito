@@ -49,7 +49,7 @@ export default function App() {
         </div>
 
         <div className="max-w-4xl mx-auto text-center z-10 flex flex-col items-center">
-          <p className="text-accent uppercase tracking-[0.2em] text-xs font-bold mb-6">Fondato sull'Eccellenza</p>
+          <p className="text-accent uppercase tracking-[0.2em] text-xs font-bold mb-6">Fondato sulla professionalità</p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-none mb-8 text-balance text-foreground">
             Studio Legale <br/>
             <span className="italic text-foreground">Villa.</span>
