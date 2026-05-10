@@ -52,17 +52,17 @@ export default function App() {
           <p className="text-accent uppercase tracking-[0.2em] text-xs font-bold mb-6">Fondato sulla professionalità</p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-none mb-8 text-balance text-foreground">
             Studio Legale <br/>
-            <span className="italic text-foreground">Villa.</span>
+            <span className="italic text-foreground">Giuseppe Villa.</span>
           </h1>
           <p className="text-foreground text-lg md:text-xl font-medium max-w-2xl text-balance mb-12">
             Tre generazioni di rigore, precisione e discrezione. Difendiamo i vostri interessi con una competenza forgiata dal tempo.
           </p>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="group flex items-center gap-3 px-8 py-4 bg-foreground text-primary rounded-sm font-semibold tracking-wide hover:bg-accent hover:text-white transition-colors border border-foreground hover:border-transparent"
+            className="group flex items-center gap-4 px-10 py-5 text-lg bg-foreground text-primary rounded-sm font-bold tracking-wide hover:bg-accent hover:text-white transition-colors border border-foreground hover:border-transparent"
           >
-            Prenota una Consulenza
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            Prenota un appuntamento
+            <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
         
@@ -75,24 +75,25 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8 md:items-end justify-between mb-16 md:mb-24">
             <h2 className="font-serif text-3xl md:text-5xl text-foreground">Le Nostre <span className="italic text-accent">Competenze</span></h2>
-            <p className="max-w-md font-medium text-foreground text-sm md:text-base">Focus chirurgico in ambiti legali complessi, dove la precisione analitica determina il verdetto.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-5xl">
             <CompetenceCard 
               num="01" 
               title="Diritto Civile" 
-              desc="Contrattualistica d'impresa, diritto di famiglia e tutela della proprietà intellettuale e materiale."
+              items={[
+                "Diritto di famiglia e delle persone: Separazioni e Divorzi, Divisione ereditaria, Procedimenti avanti al tribunale per i minorenni ecc.",
+                "Recupero crediti",
+                "Risarcimento danni da circolazione stradale e da infortuni sul lavoro"
+              ]}
             />
             <CompetenceCard 
               num="02" 
               title="Diritto Penale" 
-              desc="Strategie difensive rigorose per procedimenti penali tributari, societari e responsabilità degli enti."
-            />
-            <CompetenceCard 
-              num="03" 
-              title="Diritto Costituzionale" 
-              desc="Consulenza avanzata per procedimenti di revisione costituzionale e tutela dei diritti fondamentali."
+              items={[
+                "Assistenza e Difesa nei procedimenti penali avanti l'ufficio del Giudice di Pace e Tribunale ordinario",
+                "Restituzione della Patente di Guida"
+              ]}
             />
           </div>
         </div>
@@ -140,12 +141,19 @@ export default function App() {
   );
 }
 
-function CompetenceCard({ num, title, desc }) {
+function CompetenceCard({ num, title, items }) {
   return (
     <div className="group border-t border-border pt-6 cursor-default hover:border-accent/40 transition-colors duration-500">
-      <div className="text-accent font-mono font-bold text-sm mb-8">{num}</div>
-      <h3 className="text-xl md:text-2xl font-serif font-bold mb-4 text-foreground group-hover:text-accent transition-colors">{title}</h3>
-      <p className="text-foreground font-medium text-sm leading-relaxed">{desc}</p>
+      <div className="text-accent font-mono font-bold text-base mb-8">{num}</div>
+      <h3 className="text-2xl md:text-3xl font-serif font-bold mb-5 text-foreground group-hover:text-accent transition-colors">{title}</h3>
+      <ul className="text-foreground font-medium text-base leading-relaxed space-y-3">
+        {items.map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="text-accent mt-[6px] text-[10px]">■</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -183,7 +191,7 @@ function BookingModal({ isOpen, onClose }) {
 
         {!submitted ? (
           <div>
-            <h3 className="font-serif font-bold text-3xl mb-2 text-foreground">Prenota una Consulenza</h3>
+            <h3 className="font-serif font-bold text-3xl mb-2 text-foreground">Prenota un Appuntamento</h3>
             <p className="text-foreground font-medium text-sm mb-8 border-b border-border pb-6">Compila con i tuoi dati per un primo contatto riservato.</p>
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -208,7 +216,6 @@ function BookingModal({ isOpen, onClose }) {
                 <select className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium cursor-pointer appearance-none">
                   <option>Diritto Civile</option>
                   <option>Diritto Penale</option>
-                  <option>Diritto Costituzionale</option>
                   <option>Altro</option>
                 </select>
               </div>
