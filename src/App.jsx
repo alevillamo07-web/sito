@@ -52,7 +52,7 @@ export default function App() {
           <p className="text-accent uppercase tracking-[0.2em] text-xs font-bold mb-6">Fondato sulla professionalità</p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-none mb-8 text-balance text-foreground">
             Studio Legale <br/>
-            <span className="italic text-foreground">Giuseppe Villa.</span>
+            <span className="italic text-foreground">Avv. Giuseppe Villa.</span>
           </h1>
           <p className="text-foreground text-lg md:text-xl font-medium max-w-2xl text-balance mb-12">
             Tre generazioni di rigore, precisione e discrezione. Difendiamo i vostri interessi con una competenza forgiata dal tempo.
@@ -73,11 +73,11 @@ export default function App() {
       {/* COMPETENCES (MINIMAL UI) */}
       <section className="py-24 md:py-32 px-6 md:px-12 border-t border-border">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-8 md:items-end justify-between mb-16 md:mb-24">
-            <h2 className="font-serif text-3xl md:text-5xl text-foreground">Le Nostre <span className="italic text-accent">Competenze</span></h2>
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="font-serif text-4xl md:text-6xl text-foreground">Le Nostre <span className="italic text-accent">Competenze</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 max-w-5xl mx-auto">
             <CompetenceCard 
               num="01" 
               title="Diritto Civile" 
@@ -92,7 +92,7 @@ export default function App() {
               title="Diritto Penale" 
               items={[
                 "Assistenza e Difesa nei procedimenti penali avanti l'ufficio del Giudice di Pace e Tribunale ordinario",
-                "Restituzione della Patente di Guida"
+                "Ricorsi per la restituzione della Patente di Guida"
               ]}
             />
           </div>
@@ -143,13 +143,13 @@ export default function App() {
 
 function CompetenceCard({ num, title, items }) {
   return (
-    <div className="group border-t border-border pt-6 cursor-default hover:border-accent/40 transition-colors duration-500">
-      <div className="text-accent font-mono font-bold text-base mb-8">{num}</div>
-      <h3 className="text-2xl md:text-3xl font-serif font-bold mb-5 text-foreground group-hover:text-accent transition-colors">{title}</h3>
-      <ul className="text-foreground font-medium text-base leading-relaxed space-y-3">
+    <div className="group border-t border-border pt-8 cursor-default hover:border-accent/40 transition-colors duration-500">
+      <div className="text-accent font-mono font-bold text-lg mb-8">{num}</div>
+      <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-foreground group-hover:text-accent transition-colors">{title}</h3>
+      <ul className="text-foreground font-medium text-lg md:text-xl leading-relaxed space-y-4">
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-3">
-            <span className="text-accent mt-[6px] text-[10px]">■</span>
+            <span className="text-accent mt-[8px] text-[12px]">■</span>
             <span>{item}</span>
           </li>
         ))}
