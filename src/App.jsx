@@ -163,13 +163,35 @@ function BookingModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 3000);
+    
+    const formData = new FormData(e.target);
+    formData.append("access_key", "e988a9f9-e789-47cf-b77b-9ef6908f5b34");
+    // Opzionale: per fare in modo che l'email di risposta (Reply-To) sia quella dell'utente
+    // Web3forms riconosce automaticamente il campo 'email' se si chiama così.
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+        }, 3000);
+      } else {
+        alert("Si è verificato un errore durante l'invio. Riprova più tardi.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Errore di connessione. Riprova più tardi.");
+    }
   };
 
   return (
@@ -198,31 +220,31 @@ function BookingModal({ isOpen, onClose }) {
               <div className="grid grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-bold text-foreground uppercase tracking-widest">Nome</label>
-                  <input required type="text" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
+                  <input required name="nome" type="text" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-bold text-foreground uppercase tracking-widest">Cognome</label>
-                  <input required type="text" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
+                  <input required name="cognome" type="text" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-bold text-foreground uppercase tracking-widest">Email</label>
-                <input required type="email" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
+                <input required name="email" type="email" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-bold text-foreground uppercase tracking-widest">Area di Interesse</label>
-                <select className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium cursor-pointer appearance-none">
-                  <option>Diritto Civile</option>
-                  <option>Diritto Penale</option>
-                  <option>Altro</option>
+                <select name="area_interesse" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium cursor-pointer appearance-none">
+                  <option value="Diritto Civile">Diritto Civile</option>
+                  <option value="Diritto Penale">Diritto Penale</option>
+                  <option value="Altro">Altro</option>
                 </select>
               </div>
 
               <div className="flex flex-col gap-1.5 mb-2">
                 <label className="text-xs font-bold text-foreground uppercase tracking-widest">Messaggio Breve</label>
-                <textarea rows="3" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors resize-none font-medium"></textarea>
+                <textarea name="messaggio" rows="3" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors resize-none font-medium"></textarea>
               </div>
 
               <button type="submit" className="w-full bg-foreground text-primary font-bold tracking-wide py-4 hover:bg-accent hover:text-white transition-colors mt-2">
