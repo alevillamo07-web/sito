@@ -105,7 +105,7 @@ export default function App() {
           <p className="text-foreground font-bold uppercase tracking-[0.2em] text-xs mb-8">Il Nostro Manifesto</p>
           <div className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight font-medium max-w-4xl mx-auto">
             <span className="text-foreground block mb-6">Professionalità, Competenza ed Esperienza sono i pilastri su cui ci basiamo da più di 50 anni</span>
-            <span className="italic text-accent block font-bold">per offrire le soluzioni più efficienti.</span>
+            <span className="italic text-accent block font-bold text-5xl md:text-6xl lg:text-7xl mt-8 leading-none">per offrire le soluzioni più efficienti.</span>
           </div>
         </div>
       </section>
@@ -115,7 +115,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
           <div className="max-w-xs">
             <div className="font-serif font-bold text-2xl mb-4 text-foreground">Studio Legale <span className="text-accent italic">Villa</span></div>
-            <p className="text-foreground font-medium text-sm">Elevata competenza giuridica unita ad una visione d'insieme chiara, dal 1960.</p>
+            <div className="text-foreground font-medium text-base">
+              <p>Avv. Giangiacomo Villa</p>
+              <p className="mt-4">Avv. Giuseppe Villa</p>
+            </div>
           </div>
           
           <div className="flex flex-col gap-2 text-sm text-foreground font-mono font-medium">
