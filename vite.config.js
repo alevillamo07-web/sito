@@ -7,13 +7,6 @@ export default defineConfig({
   build: {
     sourcemap: false,
     minify: 'esbuild',
-    target: 'esnext',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'lucide-react']
-        }
-      }
-    }
+    target: 'esnext'
   }
 })
