@@ -27,10 +27,10 @@ export default function App() {
             Studio Legale <span className="text-accent italic">Avv. Giuseppe Villa</span>
           </a>
           
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-widest uppercase">
-            <a href="#competenze" className="hover:text-accent transition-colors">Competenze</a>
-            <a href="#manifesto" className="hover:text-accent transition-colors">Manifesto</a>
-            <a href="#contatti" className="hover:text-accent transition-colors">Contatti</a>
+          <nav className="hidden lg:flex items-center gap-3 text-xs font-bold tracking-widest uppercase">
+            <a href="#competenze" className="px-5 py-2.5 border border-foreground/20 rounded-full hover:border-accent hover:text-accent transition-colors">Competenze</a>
+            <a href="#manifesto" className="px-5 py-2.5 border border-foreground/20 rounded-full hover:border-accent hover:text-accent transition-colors">Manifesto</a>
+            <a href="#contatti" className="px-5 py-2.5 border border-foreground/20 rounded-full hover:border-accent hover:text-accent transition-colors">Contatti</a>
           </nav>
 
           <button 
@@ -132,7 +132,7 @@ export default function App() {
             <span className="text-foreground uppercase tracking-wider font-bold text-xs mb-2 font-sans">Contatti</span>
             <p>Viale Alcide De Gasperi, 6</p>
             <p>24047 Treviglio (BG)</p>
-            <p className="mt-2">Tel: 0363 48194</p>
+            <p className="mt-2">Tel: <a href="tel:036348194" className="underline underline-offset-4 hover:text-accent transition-colors">0363 48194</a></p>
             <p>P. IVA: 00416300168</p>
           </div>
         </div>
@@ -232,7 +232,7 @@ function BookingModal({ isOpen, onClose }) {
           <div>
             <h3 className="font-serif font-bold text-3xl mb-2 text-foreground">Prenota un Appuntamento</h3>
             <p className="text-foreground font-medium text-sm mb-8 border-b border-border pb-6">
-              Telefona al <a href="tel:036348194" className="font-bold hover:text-accent transition-colors">0363 48194</a> oppure invia un'email compilando i tuoi dati per un primo contatto riservato.
+              Telefona al <a href="tel:036348194" className="font-bold underline underline-offset-4 hover:text-accent transition-colors">0363 48194</a> oppure invia un'email compilando i tuoi dati per un primo contatto riservato.
             </p>
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
