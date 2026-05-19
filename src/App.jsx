@@ -35,6 +35,7 @@ export default function App() {
 
           <button 
             onClick={() => setIsModalOpen(true)}
+            aria-label="Prenota un appuntamento"
             className="text-sm font-bold tracking-wide uppercase px-5 py-2.5 bg-accent/10 text-[#ac8831] hover:bg-accent hover:text-white rounded-full transition-colors whitespace-nowrap"
           >
             Prenota
@@ -66,10 +67,11 @@ export default function App() {
           </p>
           <button 
             onClick={() => setIsModalOpen(true)}
+            aria-label="Prenota un appuntamento"
             className="group flex items-center gap-4 px-10 py-5 text-lg bg-foreground text-primary rounded-sm font-bold tracking-wide hover:bg-accent hover:text-white transition-colors border border-foreground hover:border-transparent"
           >
             Prenota un appuntamento
-            <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </button>
         </div>
         
@@ -130,8 +132,10 @@ export default function App() {
           
           <div className="flex flex-col gap-2 text-sm text-foreground font-mono font-medium md:mx-auto">
             <span className="text-foreground uppercase tracking-wider font-bold text-xs mb-2 font-sans">Contatti</span>
-            <p>Viale Alcide De Gasperi, 6</p>
-            <p>24047 Treviglio (BG)</p>
+            <a href="https://maps.google.com/?q=Viale+Alcide+De+Gasperi,+6,+24047+Treviglio+BG" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors block" aria-label="Apri indirizzo in Google Maps">
+              <p>Viale Alcide De Gasperi, 6</p>
+              <p>24047 Treviglio (BG)</p>
+            </a>
             <p className="mt-2">Tel: <a href="tel:036348194" className="underline underline-offset-4 hover:text-accent transition-colors">0363 48194</a></p>
             <p>P. IVA: 00416300168</p>
           </div>
@@ -238,9 +242,10 @@ function BookingModal({ isOpen, onClose }) {
       <div className="relative w-full max-w-lg bg-white border-2 border-foreground p-8 md:p-12 shadow-2xl z-10 overflow-hidden">
         <button 
           onClick={onClose}
+          aria-label="Chiudi modale"
           className="absolute top-6 right-6 text-foreground hover:text-accent transition-colors"
         >
-          <X size={24} strokeWidth={2} />
+          <X size={24} strokeWidth={2} aria-hidden="true" />
         </button>
 
         {!submitted ? (
@@ -262,9 +267,15 @@ function BookingModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-foreground uppercase tracking-widest">Email</label>
-                <input required name="email" type="email" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-bold text-foreground uppercase tracking-widest">Email</label>
+                  <input required name="email" type="email" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-bold text-foreground uppercase tracking-widest">Telefono <span className="opacity-60 lowercase font-normal">(Opzionale)</span></label>
+                  <input name="telefono" type="tel" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors font-medium" />
+                </div>
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -278,7 +289,14 @@ function BookingModal({ isOpen, onClose }) {
 
               <div className="flex flex-col gap-1.5 mb-2">
                 <label className="text-xs font-bold text-foreground uppercase tracking-widest">Messaggio Breve</label>
-                <textarea name="messaggio" rows="3" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors resize-none font-medium"></textarea>
+                <textarea required name="messaggio" rows="3" className="bg-transparent border border-border p-3 text-sm focus:outline-none focus:border-foreground text-foreground transition-colors resize-none font-medium"></textarea>
+              </div>
+
+              <div className="flex items-start gap-3 mt-1 mb-2">
+                <input required type="checkbox" id="privacy" name="privacy" className="mt-1 w-4 h-4 cursor-pointer accent-[#ac8831]" />
+                <label htmlFor="privacy" className="text-xs text-foreground/80 font-medium cursor-pointer">
+                  Acconsento al trattamento dei dati personali in accordo con la <a href="https://www.iubenda.com/privacy-policy/65823757" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">Privacy Policy</a>.
+                </label>
               </div>
 
               <button type="submit" className="w-full bg-foreground text-primary font-bold tracking-wide py-4 hover:bg-accent hover:text-white transition-colors mt-2">
