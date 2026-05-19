@@ -22,13 +22,20 @@ export default function App() {
           isScrolled ? 'bg-primary/95 backdrop-blur-md py-4 shadow-sm shadow-foreground/5' : 'bg-transparent py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          <div className="font-serif text-xl tracking-wide font-medium">
-            Studio Legale <span className="text-accent italic">Villa</span>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center gap-4">
+          <a href="#" className="font-serif text-lg md:text-xl tracking-wide font-medium hover:opacity-80 transition-opacity">
+            Studio Legale <span className="text-accent italic">Avv. Giuseppe Villa</span>
+          </a>
+          
+          <nav className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-widest uppercase">
+            <a href="#competenze" className="hover:text-accent transition-colors">Competenze</a>
+            <a href="#manifesto" className="hover:text-accent transition-colors">Manifesto</a>
+            <a href="#contatti" className="hover:text-accent transition-colors">Contatti</a>
+          </nav>
+
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="text-sm font-bold tracking-wide uppercase px-5 py-2.5 bg-accent/10 text-[#ac8831] hover:bg-accent hover:text-white rounded-full transition-colors"
+            className="text-sm font-bold tracking-wide uppercase px-5 py-2.5 bg-accent/10 text-[#ac8831] hover:bg-accent hover:text-white rounded-full transition-colors whitespace-nowrap"
           >
             Prenota
           </button>
@@ -71,7 +78,7 @@ export default function App() {
       </section>
 
       {/* COMPETENCES (MINIMAL UI) */}
-      <section className="py-24 md:py-32 px-6 md:px-12 border-t border-border">
+      <section id="competenze" className="py-24 md:py-32 px-6 md:px-12 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-24">
             <h2 className="font-serif text-4xl md:text-6xl text-foreground">Le Nostre <span className="italic text-accent">Competenze</span></h2>
@@ -100,7 +107,7 @@ export default function App() {
       </section>
 
       {/* PHILOSOPHY */}
-      <section className="py-24 md:py-40 px-6 md:px-12 bg-foreground/5 text-foreground border-y border-border">
+      <section id="manifesto" className="py-24 md:py-40 px-6 md:px-12 bg-foreground/5 text-foreground border-y border-border">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
           <p className="text-foreground font-bold uppercase tracking-[0.2em] text-xs mb-8">Il Nostro Manifesto</p>
           <div className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight font-medium max-w-4xl mx-auto">
@@ -111,10 +118,10 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-24 pb-12 px-6 md:px-12">
+      <footer id="contatti" className="pt-24 pb-12 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-          <div className="max-w-xs">
-            <div className="font-serif font-bold text-2xl mb-4 text-foreground">Studio Legale <span className="text-accent italic">Villa</span></div>
+          <div className="max-w-sm">
+            <div className="font-serif font-bold text-2xl mb-4 text-foreground">Studio Legale <span className="text-accent italic">Avv. Giuseppe Villa</span></div>
             <div className="text-foreground font-medium text-base">
               <p>Avv. Giangiacomo Villa</p>
               <p className="mt-4">Avv. Giuseppe Villa</p>
@@ -131,7 +138,7 @@ export default function App() {
         
         <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono font-medium text-foreground">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <p>&copy; {new Date().getFullYear()} Studio Legale Villa. Tutti i diritti riservati.</p>
+            <p>&copy; {new Date().getFullYear()} Studio Legale Avv. Giuseppe Villa. Tutti i diritti riservati.</p>
             <div className="flex items-center gap-4">
               <a href="https://www.iubenda.com/privacy-policy/65823757" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Privacy Policy ">Privacy Policy</a>
               <a href="https://www.iubenda.com/privacy-policy/65823757/cookie-policy" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Cookie Policy ">Cookie Policy</a>
@@ -265,7 +272,7 @@ function BookingModal({ isOpen, onClose }) {
           <div className="flex flex-col items-center justify-center text-center py-12">
             <CheckCircle2 size={48} className="text-accent mb-6" strokeWidth={2} />
             <h3 className="font-serif font-bold text-2xl mb-2 text-foreground">Richiesta Inviata</h3>
-            <p className="text-foreground font-medium text-sm">Lo Studio Legale Villa la contatterà al più presto.</p>
+            <p className="text-foreground font-medium text-sm">Lo Studio Legale Avv. Giuseppe Villa la contatterà al più presto.</p>
           </div>
         )}
       </div>
