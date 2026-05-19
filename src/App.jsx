@@ -130,7 +130,13 @@ export default function App() {
         </div>
         
         <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono font-medium text-foreground">
-          <p>&copy; {new Date().getFullYear()} Studio Legale Villa. Tutti i diritti riservati.</p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <p>&copy; {new Date().getFullYear()} Studio Legale Villa. Tutti i diritti riservati.</p>
+            <div className="flex items-center gap-4">
+              <a href="https://www.iubenda.com/privacy-policy/65823757" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Privacy Policy ">Privacy Policy</a>
+              <a href="https://www.iubenda.com/privacy-policy/65823757/cookie-policy" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Cookie Policy ">Cookie Policy</a>
+            </div>
+          </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></div>
             <span className="font-bold">SYSTEM OPERATIONAL</span>
