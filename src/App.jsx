@@ -119,7 +119,7 @@ export default function App() {
 
       {/* FOOTER */}
       <footer id="contatti" className="pt-24 pb-12 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 justify-between">
           <div className="max-w-sm">
             <div className="font-serif font-bold text-2xl mb-4 text-foreground">Studio Legale <span className="text-accent italic">Avv. Giuseppe Villa</span></div>
             <div className="text-foreground font-medium text-base">
@@ -128,12 +128,27 @@ export default function App() {
             </div>
           </div>
           
-          <div className="flex flex-col gap-2 text-sm text-foreground font-mono font-medium">
+          <div className="flex flex-col gap-2 text-sm text-foreground font-mono font-medium md:mx-auto">
             <span className="text-foreground uppercase tracking-wider font-bold text-xs mb-2 font-sans">Contatti</span>
             <p>Viale Alcide De Gasperi, 6</p>
             <p>24047 Treviglio (BG)</p>
             <p className="mt-2">Tel: <a href="tel:036348194" className="underline underline-offset-4 hover:text-accent transition-colors">0363 48194</a></p>
             <p>P. IVA: 00416300168</p>
+          </div>
+
+          <div className="flex flex-col gap-2 text-sm text-foreground font-mono font-medium md:ml-auto">
+            <span className="text-foreground uppercase tracking-wider font-bold text-xs mb-2 font-sans">Orari di apertura</span>
+            <table className="w-full text-left border-collapse">
+              <tbody>
+                <tr><td className="py-1 pr-6 opacity-70">Lunedì</td><td className="py-1">09:30 - 12:30 | 15:00 - 19:00</td></tr>
+                <tr><td className="py-1 pr-6 opacity-70">Martedì</td><td className="py-1">09:30 - 12:30 | 15:00 - 19:00</td></tr>
+                <tr><td className="py-1 pr-6 opacity-70">Mercoledì</td><td className="py-1">09:30 - 12:30 | 15:00 - 19:00</td></tr>
+                <tr><td className="py-1 pr-6 opacity-70">Giovedì</td><td className="py-1">09:30 - 12:30 | 15:00 - 19:00</td></tr>
+                <tr><td className="py-1 pr-6 opacity-70">Venerdì</td><td className="py-1">09:30 - 12:30 | 15:00 - 19:00</td></tr>
+                <tr><td className="py-1 pr-6 opacity-70">Sabato</td><td className="py-1">Chiuso</td></tr>
+                <tr><td className="py-1 pr-6 opacity-70">Domenica</td><td className="py-1">Chiuso</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
         
