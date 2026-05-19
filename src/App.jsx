@@ -113,7 +113,8 @@ export default function App() {
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
           <p className="text-foreground font-bold uppercase tracking-[0.2em] text-xs mb-8">Il Nostro Manifesto</p>
           <div className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight font-medium max-w-4xl mx-auto">
-            <span className="text-foreground block mb-6">Professionalità, Competenza ed Esperienza sono i pilastri su cui ci basiamo da più di 50 anni</span>
+            <span className="text-foreground block mb-6">Professionalità, Competenza ed Esperienza</span>
+            <span className="text-foreground block mb-12">sono i pilastri su cui ci basiamo da più di 50 anni</span>
             <span className="italic text-accent block font-bold text-5xl md:text-6xl lg:text-7xl mt-8 leading-none">per offrire le soluzioni più efficienti.</span>
           </div>
         </div>
