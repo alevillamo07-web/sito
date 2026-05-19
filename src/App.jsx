@@ -132,7 +132,8 @@ export default function App() {
             <span className="text-foreground uppercase tracking-wider font-bold text-xs mb-2 font-sans">Contatti</span>
             <p>Viale Alcide De Gasperi, 6</p>
             <p>24047 Treviglio (BG)</p>
-            <p className="mt-2">P. IVA: 00416300168</p>
+            <p className="mt-2">Tel: 0363 48194</p>
+            <p>P. IVA: 00416300168</p>
           </div>
         </div>
         
@@ -230,7 +231,9 @@ function BookingModal({ isOpen, onClose }) {
         {!submitted ? (
           <div>
             <h3 className="font-serif font-bold text-3xl mb-2 text-foreground">Prenota un Appuntamento</h3>
-            <p className="text-foreground font-medium text-sm mb-8 border-b border-border pb-6">Compila con i tuoi dati per un primo contatto riservato.</p>
+            <p className="text-foreground font-medium text-sm mb-8 border-b border-border pb-6">
+              Telefona al <a href="tel:036348194" className="font-bold hover:text-accent transition-colors">0363 48194</a> oppure invia un'email compilando i tuoi dati per un primo contatto riservato.
+            </p>
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-2 gap-5">
