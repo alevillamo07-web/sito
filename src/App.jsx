@@ -23,7 +23,7 @@ export default function App() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center gap-4">
-          <a href="#" className="font-serif text-lg md:text-xl tracking-wide font-medium hover:opacity-80 transition-opacity">
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-lg md:text-xl tracking-wide font-medium hover:opacity-80 transition-opacity cursor-pointer">
             Studio Legale <span className="text-accent italic">Avv. Giuseppe Villa</span>
           </a>
           
@@ -198,6 +198,14 @@ function CompetenceCard({ num, title, items }) {
 function BookingModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
@@ -218,6 +226,7 @@ function BookingModal({ isOpen, onClose }) {
       
       if (data.success) {
         setSubmitted(true);
+        e.target.reset();
         setTimeout(() => {
           setSubmitted(false);
           onClose();
