@@ -4,6 +4,7 @@ import { X, ArrowRight, CheckCircle2 } from 'lucide-react';
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -160,7 +161,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono font-medium text-foreground">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <p>&copy; {new Date().getFullYear()} Studio Legale Avv. Giuseppe Villa. Tutti i diritti riservati.</p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4">
+              <a href="#" onClick={(e) => { e.preventDefault(); setIsLegalModalOpen(true); }} className="hover:text-accent transition-colors" title="Note Legali">Note Legali</a>
               <a href="https://www.iubenda.com/privacy-policy/65823757" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Privacy Policy ">Privacy Policy</a>
               <a href="https://www.iubenda.com/privacy-policy/65823757/cookie-policy" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Cookie Policy ">Cookie Policy</a>
             </div>
@@ -172,8 +174,9 @@ export default function App() {
         </div>
       </footer>
 
-      {/* MODAL */}
+      {/* MODALS */}
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} />
     </div>
   );
 }
@@ -321,6 +324,64 @@ function BookingModal({ isOpen, onClose }) {
             <p className="text-foreground font-medium text-sm">Lo Studio Legale Avv. Giuseppe Villa la contatterà al più presto.</p>
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+function LegalModal({ isOpen, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div 
+        className="absolute inset-0 bg-primary/95 backdrop-blur-sm cursor-pointer"
+        onClick={onClose}
+      ></div>
+      
+      {/* Modal Content */}
+      <div className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white border-2 border-foreground p-8 md:p-12 shadow-2xl z-10 custom-scrollbar">
+        <button 
+          onClick={onClose}
+          aria-label="Chiudi modale note legali"
+          className="absolute top-6 right-6 text-foreground hover:text-accent transition-colors"
+        >
+          <X size={24} strokeWidth={2} aria-hidden="true" />
+        </button>
+
+        <h3 className="font-serif font-bold text-3xl mb-8 text-foreground border-b border-border pb-4">Note Legali</h3>
+        
+        <div className="text-foreground text-sm leading-relaxed space-y-6 font-medium">
+          <section>
+            <h4 className="font-bold uppercase tracking-widest text-xs mb-2">Informazioni Obbligatorie</h4>
+            <p>Il presente sito web e i servizi legali ad esso associati sono gestiti dallo Studio Legale Avv. Giuseppe Villa, con sede in Viale Alcide De Gasperi, 6, 24047 Treviglio (BG). Partita IVA: 00416300168.</p>
+            <p className="mt-2">Gli avvocati dello Studio operano nel rigoroso rispetto del Codice Deontologico Forense e della normativa vigente in materia di professione forense.</p>
+          </section>
+
+          <section>
+            <h4 className="font-bold uppercase tracking-widest text-xs mb-2">Esclusione di Responsabilità</h4>
+            <p>I contenuti pubblicati in questo sito hanno scopo esclusivamente informativo e non rivestono in alcun caso carattere di esaustività, né possono in alcun modo essere assimilati a un parere legale o a una consulenza professionale. Lo Studio declina ogni responsabilità per eventuali danni derivanti dall'affidamento riposto sui contenuti del presente sito.</p>
+          </section>
+
+          <section>
+            <h4 className="font-bold uppercase tracking-widest text-xs mb-2">Natura delle Comunicazioni</h4>
+            <p>La trasmissione di informazioni tramite il modulo di contatto o l'invio di posta elettronica agli indirizzi indicati non costituisce l'instaurazione di un rapporto di mandato professionale tra l'utente e lo Studio Legale. Si invitano gli utenti a non trasmettere documentazione confidenziale o informazioni sensibili prima della formale accettazione dell'incarico.</p>
+          </section>
+
+          <section>
+            <h4 className="font-bold uppercase tracking-widest text-xs mb-2">Proprietà Intellettuale</h4>
+            <p>Tutti i contenuti, i testi, le grafiche e il design del sito sono di proprietà esclusiva dello Studio Legale Avv. Giuseppe Villa. Ne è severamente vietata la riproduzione, la copia o l'utilizzo non autorizzato in qualsiasi forma e con qualsiasi mezzo.</p>
+          </section>
+        </div>
       </div>
     </div>
   );
