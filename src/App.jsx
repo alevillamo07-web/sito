@@ -134,11 +134,12 @@ export default function App() {
           
           <div className="flex flex-col gap-2 text-sm text-foreground font-mono font-medium md:mx-auto">
             <span className="text-foreground uppercase tracking-wider font-bold text-xs mb-2 font-sans">Contatti</span>
-            <a href="https://maps.google.com/?q=Viale+Alcide+De+Gasperi,+6,+24047+Treviglio+BG" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors block" aria-label="Apri indirizzo in Google Maps">
+            <a href="https://maps.google.com/?q=Viale+Alcide+De+Gasperi,+6,+24047+Treviglio+BG" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent transition-colors block" aria-label="Apri indirizzo in Google Maps">
               <p>Viale Alcide De Gasperi, 6</p>
               <p>24047 Treviglio (BG)</p>
             </a>
             <p className="mt-2">Tel: <a href="tel:036348194" className="underline underline-offset-4 hover:text-accent transition-colors">0363 48194</a></p>
+            <p>Email: <a href="#" onClick={(e) => { e.preventDefault(); setIsModalOpen(true); }} className="underline underline-offset-4 hover:text-accent transition-colors" aria-label="Apri il modulo di prenotazione">studioleg.villa@libero.it</a></p>
             <p>P. IVA: 00416300168</p>
           </div>
 
