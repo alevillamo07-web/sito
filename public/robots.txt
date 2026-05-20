@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studiolegalevilla.it/sitemap.xml
+Sitemap: https://sito-2no.pages.dev/sitemap.xml
