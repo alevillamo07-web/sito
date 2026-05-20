@@ -126,9 +126,15 @@ export default function App() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 justify-between">
           <div className="max-w-sm">
             <div className="font-serif font-bold text-2xl mb-4 text-foreground">Studio Legale <span className="text-accent italic">Avv. Giuseppe Villa</span></div>
-            <div className="text-foreground font-medium text-base">
-              <p>Avv. Giangiacomo Villa</p>
-              <p className="mt-4">Avv. Giuseppe Villa</p>
+            <div className="text-foreground font-medium text-base space-y-4">
+              <p className="uppercase tracking-[0.18em] font-bold text-xs text-foreground/70 font-sans">Professionisti</p>
+              <div className="space-y-1">
+                <p>Avv. Giangiacomo Villa</p>
+              </div>
+              <div className="space-y-1">
+                <p>Avv. Giuseppe Villa</p>
+                <p className="text-sm opacity-70 tracking-wide">VLLGPP44D19L400I</p>
+              </div>
             </div>
           </div>
           
