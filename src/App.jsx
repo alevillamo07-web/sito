@@ -162,9 +162,9 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <p>&copy; {new Date().getFullYear()} Studio Legale Avv. Giuseppe Villa. Tutti i diritti riservati.</p>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4">
-              <a href="https://www.iubenda.com/privacy-policy/65823757" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Privacy Policy">Privacy Policy</a>
+              <a href="https://www.iubenda.com/privacy-policy/65823757" className="iubenda-nostyle iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Privacy Policy">Privacy Policy</a>
               <span className="opacity-30 hidden md:inline">|</span>
-              <a href="https://www.iubenda.com/privacy-policy/65823757/cookie-policy" className="iubenda-white iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Cookie Policy">Cookie Policy</a>
+              <a href="https://www.iubenda.com/privacy-policy/65823757/cookie-policy" className="iubenda-nostyle iubenda-noiframe iubenda-embed hover:text-accent transition-colors" title="Cookie Policy">Cookie Policy</a>
               <span className="opacity-30 hidden md:inline">|</span>
               <a href="#" onClick={(e) => { e.preventDefault(); setIsLegalModalOpen(true); }} className="hover:text-accent transition-colors" title="Note Legali">Note Legali</a>
             </div>
@@ -191,7 +191,7 @@ function CompetenceCard({ num, title, items }) {
       <ul className="text-foreground font-medium text-lg md:text-xl leading-relaxed space-y-4">
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-4">
-            <span className="text-accent mt-[10px] text-[10px] flex-shrink-0">■</span>
+            <div className="w-2 h-2 bg-accent mt-[10px] flex-shrink-0"></div>
             <span className="flex-1">{item}</span>
           </li>
         ))}
